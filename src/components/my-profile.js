@@ -3,18 +3,18 @@
  */
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-
+import { fetchItem, deleteItem } from '../actions/index';
 import { Link } from 'react-router';
 
-class SearchItems extends Component {
+class MyProfile extends Component {
 
 
     render() {
         return (
             <div>
-                <h3>Title</h3>
+                <h3>My Profile</h3>
                 <ul className="list-group">
-                    Testing Search Items
+                    Testing My Profile
                 </ul>
             </div>
         );
@@ -22,4 +22,4 @@ class SearchItems extends Component {
 }
 
 
-export default SearchItems;
+export default MyProfile;

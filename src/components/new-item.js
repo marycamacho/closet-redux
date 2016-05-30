@@ -11,17 +11,12 @@ class NewItem extends Component {
 
     render() {
         return (
-            <div>
-                <div className="text-xs-right">
-                    <Link to="/" className="btn btn-primary">
-                        Return to index
-                    </Link>
-                </div>
-                <h3>New Item</h3>
-                <ul className="list-group">
-                    Testing New Item
-                </ul>
-            </div>
+        <div>
+            <h3>New Item</h3>
+            <ul className="list-group">
+                Testing New Item
+            </ul>
+        </div>
         );
     }
 }

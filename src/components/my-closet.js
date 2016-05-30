@@ -8,18 +8,28 @@ import { Link } from 'react-router';
 
 class MyCloset extends Component {
 
+    renderItems() {
+        return this.props.items.map((item) => {
+            return (
+                <li className="list-group-item" key={item.id}>
+                    <Link to={"items/" + item.id}>
+                        <span className="pull-xs-right">{item.categories}</span>
+                        <strong>{item.name}</strong>
+                    </Link>
+                </li>
+            );
+        });
+    }
+
 
     render() {
         return (
             <div>
-                <div className="text-xs-right">
-                    <Link to="/items/new" className="btn btn-primary">
-                        Add Item
-                    </Link>
-                </div>
+
                 <h3>Items</h3>
                 <ul className="list-group">
                     Testing My Closet in Routes
+                    /*{this.renderItems}*/
                 </ul>
             </div>
         );
