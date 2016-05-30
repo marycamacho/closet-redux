@@ -24,7 +24,7 @@ class NavMenu extends Component {
                         <li><Link to="/search" className="">
                             Search Items
                         </Link></li>
-                        
+
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
                         <li><Link to="/my-profile" className="">
@@ -33,7 +33,7 @@ class NavMenu extends Component {
                         <li><a href="/logout" className="">
                             Logout
                         </a></li>
-                        <li><a href="/login" className="">
+                        <li><a href="/oauth" className="">
                             Login
                         </a></li>
                     </ul>

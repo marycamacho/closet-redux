@@ -5,6 +5,7 @@
 (function () {
     "use strict";
 
+    var PORT = 3700;
     var express = require('express');
     var bodyParser = require('body-parser');
     var cookieParser = require('cookie-parser');
@@ -35,19 +36,29 @@
         
         /*Routes*/
 
-        //root
+        //root*/
 
         app.get("/", function (req, res) {
 
-            if (!req.session.firstName)  {
-                res.redirect("/loginOauth");
+            /*if (!req.session.firstName)  {
+                res.redirect("index.html");
                 return;
-            }
-            res.sendFile(__dirname + '/public/index.html');
+            }*/
+            res.sendFile(__dirname + '/dev/index.html');
 
         });
 
-        //signup page
+        app.get("/oauth", function (req, res) {
+
+            /*if (!req.session.firstName)  {
+             res.redirect("index.html");
+             return;
+             }*/
+            res.sendFile(__dirname + '/dev/oath.html');
+
+        });
+
+        /*/signup page
         app.get("/signup", function (req, res) {
             res.sendFile(__dirname + '/public/pages/signup.html');
         });
@@ -59,7 +70,7 @@
             newSignup(req, res);
         });
 
-        //*login routes and functions
+        //!*login routes and functions
 
         var handleLogin = require('./server/routes/login')(dbConnection);
 
@@ -72,7 +83,7 @@
             handleLogin(req, res, false);
         });
 
-            /*//!* first login routes and functions
+            /!*!//!* first login routes and functions
 
             app.post("/first-login", function (req, res) {
 
@@ -81,7 +92,7 @@
 
             app.get("/first-login", function (req, res) {
                 res.sendFile(__dirname + '/public/pages/first-login.html');
-            });*/
+            });*!/
 
        //logout
 
@@ -168,10 +179,11 @@
             var newItem = require('./server/api/new-item')(dbConnection);
             newItem(req, res);
         });
-
+*/
         /*Always put last because it is sequential*/
 
-        app.use(express.static('public'));
+        app.use(express.static('dev'));
+        app.use(express.static('server/public'))
 
         app.use(function (req, res, next) {
             res.status(404);

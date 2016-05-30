@@ -5,9 +5,13 @@
   "main": "index.js",
   "repository": "git@github.com:/marycamacho/closet-redux.git",
   "scripts": {
-    "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "prestart": "rm -rf dev && mkdir dev && cp -R pages/* dev && cp -R style dev",
+    "start": "npm-run-all --parallel bundle serve",
+    "serve": "node index.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
-    "test:watch": "npm run test -- --watch"
+    "test:watch": "npm run test -- --watch",
+    "bundle": "webpack",
+    "build": "webpack"
   },
   "author": "Mary Camacho",
   "license": "",
@@ -24,12 +28,16 @@
     "jquery": "^2.2.1",
     "jsdom": "^8.1.0",
     "mocha": "^2.4.5",
+    "npm-run-all": "^2.1.1",
     "react-addons-test-utils": "^0.14.7",
     "webpack": "^1.12.9",
     "webpack-dev-server": "^1.14.0"
   },
   "dependencies": {
+    "assert": "^1.4.0",
     "babel-preset-stage-1": "^6.1.18",
+    "body-parser": "^1.15.1",
+    "cookie-parser": "^1.4.3",
     "express": "^4.13.4",
     "express-session": "^1.13.0",
     "lodash": "^3.10.1",
