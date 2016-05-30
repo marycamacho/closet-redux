@@ -14,6 +14,10 @@
     var config = require('./config.js');
     var app = express();
     var OAuth = require('oauthio');
+    var webpack = require('webpack');
+    var webpackConfig = require('./webpack.config.js');
+    var compiler = webpack(webpackConfig);
+
 
     /*MiddleWare*/
 
@@ -48,12 +52,12 @@
 
         });
 
-        app.get("/oauth", function (req, res) {
+        app.get("/login", function (req, res) {
 
-            /*if (!req.session.firstName)  {
-             res.redirect("index.html");
+            if (!req.session.firstName)  {
+             res.redirect("/");
              return;
-             }*/
+             }
             res.sendFile(__dirname + '/dev/oath.html');
 
         });
@@ -183,7 +187,13 @@
         /*Always put last because it is sequential*/
 
         app.use(express.static('dev'));
-        app.use(express.static('server/public'))
+
+        app.use (require('webpack-dev-middleware')(compiler, {
+            noInfo: true,
+            publicPath: webpackConfig.output.publicPath
+        }));
+        app.use(require('webpack-hot-middleware')(compiler));
+
 
         app.use(function (req, res, next) {
             res.status(404);

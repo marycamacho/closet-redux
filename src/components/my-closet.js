@@ -3,18 +3,23 @@
  */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { fetchItems } from '../actions/index';
 import { Link } from 'react-router';
+import { fetchMyItems } from '../actions';
+
 
 class MyCloset extends Component {
+
+    componentWillMount() {
+        this.props.fetchMyItems();
+    }
 
     renderItems() {
         return this.props.items.map((item) => {
             return (
-                <li className="list-group-item" key={item.id}>
-                    <Link to={"items/" + item.id}>
-                        <span className="pull-xs-right">{item.categories}</span>
-                        <strong>{item.name}</strong>
+                <li className="list-group-item" key={item._id}>
+                    <Link to={"items/" + item._id}>
+                        <span className="pull-xs-right">{item.name}</span>
+                        <strong>{item.title}</strong>
                     </Link>
                 </li>
             );
@@ -28,13 +33,30 @@ class MyCloset extends Component {
 
                 <h3>Items</h3>
                 <ul className="list-group">
-                    Testing My Closet in Routes
-                    /*{this.renderItems}*/
+                    <Link to="items/new"  className="btn btn-default pull-right">Add Item</Link>
+                    {this.renderItems()}
                 </ul>
             </div>
         );
     }
 }
 
+const mapStateToProps = (state, ownProps) => {
+    return {
+        items: state.myItems.list
+    }
+}
 
-export default MyCloset;
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        fetchMyItems: () => {
+            console.log('call fetchMyItems')
+            dispatch(fetchMyItems())
+        }
+    }
+}
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(MyCloset);
