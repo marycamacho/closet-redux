@@ -24,9 +24,18 @@ class NavMenu extends Component {
                         <li><Link to="/search" className="">
                             Search Items
                         </Link></li>
+                        
+                    </ul>
+                    <ul className="nav navbar-nav navbar-right">
                         <li><Link to="/my-profile" className="">
                             My Profile
                         </Link></li>
+                        <li><a href="/logout" className="">
+                            Logout
+                        </a></li>
+                        <li><a href="/login" className="">
+                            Login
+                        </a></li>
                     </ul>
 
                 </div>
