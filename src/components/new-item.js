@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { fetchItems } from '../actions/index';
 import { Link } from 'react-router';
 
-class AddClosetItem extends Component {
+class NewItem extends Component {
 
 
     render() {
@@ -22,4 +22,4 @@ class AddClosetItem extends Component {
 }
 
 
-export default AddClosetItem;
+export default NewItem;
