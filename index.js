@@ -92,14 +92,14 @@
 
             app.get("/first-login", function (req, res) {
                 res.sendFile(__dirname + '/public/pages/first-login.html');
-            });*!/
+            });*/
 
-       //logout
+        //logout
 
         app.get('/logout', function (req, res) {
             //destroy user's session to log them out
             req.session.destroy(function() {
-                res.redirect('/');
+                res.redirect('/oauth');
             });
         });
 
@@ -107,8 +107,8 @@
 
         OAuth.initialize( config.oauthAppKey, config.oauthSecretKey);
 
-        app.get("/loginOauth", function (req, res) {
-            res.sendFile(__dirname + '/public/pages/login2.html');
+        app.get("/oauth", function (req, res) {
+            res.sendFile(__dirname + '/dev/oath.html');
         });
 
         app.get('/loginfacebook', OAuth.auth('facebook', 'http://localhost:3700/oauth/redirect'));
@@ -179,7 +179,7 @@
             var newItem = require('./server/api/new-item')(dbConnection);
             newItem(req, res);
         });
-*/
+
         /*Always put last because it is sequential*/
 
         app.use(express.static('dev'));

@@ -33,9 +33,6 @@ class NavMenu extends Component {
                         <li><a href="/logout" className="">
                             Logout
                         </a></li>
-                        <li><a href="/oauth" className="">
-                            Login
-                        </a></li>
                     </ul>
 
                 </div>

@@ -2,9 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../theme/style.css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Expletus+Sans:700' rel='stylesheet' type='text/css'>
+    <title>Login</title>
 </head>
 <body>
- test
+<div class="header container login-header">
+    <h1> My Shared Closet</h1>
+    <img src="../theme/assets/closet.jpg" />
+</div>
+<div class="container login">
+
+    <button OnClick=" location.href='/loginfacebook' " class="btn btn-block btn-login btn-default" data-provider="facebook" style="text-align: left" ng-="">
+                <span style="display: block; margin-left: 10px">
+                  <img src="https://oauth.io/api/providers/facebook/logo" width="32" height="32" class="pull-left">
+                  <span style="display: block; margin-left: 43px; position: relative; top: 5px">Login with Facebook</span>
+                </span>
+    </button>
+    <button OnClick=" location.href='/logingoogle' " class="btn btn-block btn-login btn-default" style="text-align: left" data-provider="google">
+                <span style="display: block; margin-left: 10px">
+                  <img src="https://oauth.io/api/providers/google/logo" width="32" height="32" class="pull-left">
+                  <span style="display: block; margin-left: 43px; position: relative; top: 5px">Login with Google</span>
+                </span>
+    </button>
+    <!--<form action="/login" method="post">
+        <label>Username: </label><input type="text" name="username"/>
+        <label>Password: </label><input type="password" name="password"/>
+        <input type="submit" value="Log In"/>
+    </form>-->
+    <h4>Click <a href="/pages/login.html"> here </a> if you have need to login or signup directly.</h4>
+
+
+</div>
+<script src="https://code.jquery.com/jquery-2.2.3.min.js" integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
 </body>
 </html>

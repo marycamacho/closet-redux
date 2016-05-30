@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "git@github.com:/marycamacho/closet-redux.git",
   "scripts": {
-    "prestart": "rm -rf dev && mkdir dev && cp -R pages/* dev && cp -R style dev",
+    "prestart": "rm -rf dev && mkdir dev && cp -R pages/* dev && cp -R theme dev",
     "start": "npm-run-all --parallel bundle serve",
     "serve": "node index.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
