@@ -17,12 +17,16 @@ module.exports = {
     filename: 'bundle.js'
   },
   module: {
-    loaders: [{
-      test: /.js$/,
-      exclude: /node_modules/,
-      loader: 'babel'
-      
-    }]
+      loaders: [{
+        test: /.js$/,
+        exclude: /node_modules/,
+        loader: 'babel'
+
+      },
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader"
+      }]
   },
   plugins: [
       new webpack.HotModuleReplacementPlugin()
