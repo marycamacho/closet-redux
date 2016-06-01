@@ -150,3 +150,7 @@ h3 {
 .has-danger input {
     border: 1px solid red;
 }
+
+form a {
+    margin-left: 10px;
+}

@@ -1,22 +1,32 @@
 /**
  * Created by mary on 5/29/16.
  */
-import React, { Component } from 'react';
+import React, { Component, PropTypes } from 'react';
 import { fetchItems } from '../actions/index';
 import {reduxForm} from 'redux-form';
 import { createItem } from '../actions/index';
-
+import { Link } from 'react-router';
 
 class NewItem extends Component {
 
+    static contextTypes = {
+        router:PropTypes.object
+    };
+
+    onSubmit(props) {
+        this.props.createItem(props).then(() => {
+            //item created, navigate user to index
+            this.context.router.push ('/');
+        });
+
+    }
+
     render () {
-
-
         const { fields: {name, category, description, image}, handleSubmit } = this.props;
 
-
         return (
-        <form onSubmit={handleSubmit(this.props.createItem)}>
+        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+
             <h3>Add an Item</h3>
             <div className={`form-group ${name.touched && name.invalid ? "has-danger" : '' }`}>
                 <label>Item Name</label>
@@ -38,6 +48,7 @@ class NewItem extends Component {
                 <div className="text-help">{image.touched ? image.error : ''}</div>
             </div>
             <button type="submit" className="btn btn-primary">Submit</button>
+            <Link to="/" className="btn btn-danger">Cancel</Link>
         </form>
         )
     }
