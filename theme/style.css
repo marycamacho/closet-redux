@@ -142,3 +142,11 @@ h3 {
 .btn-login {
     width: 60%;
 }
+
+.has-danger label,  .has-danger .text-help {
+    color: red;
+}
+
+.has-danger input {
+    border: 1px solid red;
+}
