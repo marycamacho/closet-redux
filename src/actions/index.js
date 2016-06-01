@@ -9,11 +9,12 @@ export const FETCH_ITEM = 'FETCH_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 
 
+
 export function fetchMyItems() {
 
     const request = $.getJSON('/my_items').then(function (result) {
         return {
-            items: result,
+            list: result,
             selectedItem: result[0]            
         };
     });
@@ -34,7 +35,12 @@ export function fetchSearchItems() {
 }
 
 export function createItem (props) {
-    //Todo: const request = ;
+
+    const request = $.post('/newItem', props).then(function (result){
+        return {
+            result
+        }
+    });
 
     return {
         type: CREATE_ITEM,
