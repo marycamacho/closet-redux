@@ -14,8 +14,8 @@ export function fetchMyItems() {
 
     const request = $.getJSON('/my_items').then(function (result) {
         return {
-            list: result,
-            selectedItem: result[0]            
+            list: result
+
         };
     });
 

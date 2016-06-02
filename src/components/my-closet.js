@@ -11,31 +11,39 @@ import { fetchMyItems } from '../actions';
 class MyCloset extends Component {
 
     componentWillMount() {
-        
+
         this.props.fetchMyItems();
+
+       
     }
 
-    /*renderItems() {
-        return this.props.list.map((item) => {
+    renderItems() {
+        const items = this.props.myItems.list;
+        return items.map((item) => {
             return (
                 <li className="list-group-item" key={item._id}>
                     <Link to={"items/" + item._id}>
-                        <span className="pull-xs-right">{item.name}</span>
-                        <strong>{item.description}</strong>
+                        <span className="pull-xs-right">{item.category}</span>
+                        <strong>{item.name}</strong>
                     </Link>
                 </li>
             );
         });
-    }*/
+    }
 
 
     render() {
         return (
             <div>
-
+                <div className="text-xs-right">
+                    <Link to="items/new"  className="btn btn-default pull-right">
+                        Add Item
+                    </Link>
+                </div>
                 <h3>Items</h3>
                 <ul className="list-group">
-                    <Link to="items/new"  className="btn btn-default pull-right">Add Item</Link>
+                    {this.renderItems()}
+
                         
                 </ul>
             </div>
@@ -44,7 +52,8 @@ class MyCloset extends Component {
 }
 
 
+function mapStateToProps(state) {
+    return {myItems: state.myItems};
+}
 
-
-
-export default connect(null, {fetchMyItems})(MyCloset);
+export default connect(mapStateToProps, {fetchMyItems})(MyCloset);
