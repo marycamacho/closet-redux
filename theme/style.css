@@ -154,3 +154,26 @@ h3 {
 form a {
     margin-left: 10px;
 }
+
+.a-mimic {
+    padding: 15px;
+}
+
+/* animation */
+.fade-enter {
+    right: 100px;
+    transform: rotateX(90deg) rotateZ(90deg);
+}
+.fade-enter-active {
+    right: 0px;
+    transform: rotateX(0deg) rotateZ(0deg);
+    transition: .5s ease-in all;
+}
+
+.fade-leave {
+    opacity: 1;
+}
+.fade-leave-active {
+    opacity: 0;
+    transition: .5s ease-out all;
+}

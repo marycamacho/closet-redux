@@ -17,7 +17,7 @@ export default (
     <Route path="/" component={App}>
         <IndexRoute component={ MyCloset } />
         <Route path="items/new" component={NewItem} />
-        <Route path="items/:id" component={ItemDetail} />
+        <Route path="items/:id" component={ItemDetail} /> 
         <Route path="search" component={SearchItems} />
         <Route path="my-profile" component={MyProfile} />
 

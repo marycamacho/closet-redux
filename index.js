@@ -17,6 +17,7 @@
     var webpack = require('webpack');
     var webpackConfig = require('./webpack.config.js');
     var compiler = webpack(webpackConfig);
+    var ObjectID = require('mongodb').ObjectID;
 
 
     /*MiddleWare*/
@@ -62,41 +63,18 @@
 
         });
 
-        /*/signup page
-        app.get("/signup", function (req, res) {
-            res.sendFile(__dirname + '/public/pages/signup.html');
+        // fetch current user for navbar
+
+        app.get('/fetch_current_user', function (req, res) {
+            if(!req.session.firstName) {
+                res.send('there is not a user in session');
+                return;
+            }
+
+            console.log(`user from /${req.session.firstName}`);
+            res.json({user: req.session.firstName});
+
         });
-
-        //adds new user to db and logs them in
-        app.post("/signup", function (req, res) {
-
-            var newSignup = require('./server/routes/signup')(dbConnection);
-            newSignup(req, res);
-        });
-
-        //!*login routes and functions
-
-        var handleLogin = require('./server/routes/login')(dbConnection);
-
-        app.get("/login", function (req, res) {
-            res.sendFile(__dirname + '/public/pages/login.html');
-        });
-
-        app.post("/login", function (req, res) {
-
-            handleLogin(req, res, false);
-        });
-
-            /!*!//!* first login routes and functions
-
-            app.post("/first-login", function (req, res) {
-
-                handleLogin(req, res, true);
-            });
-
-            app.get("/first-login", function (req, res) {
-                res.sendFile(__dirname + '/public/pages/first-login.html');
-            });*/
 
         //logout
 

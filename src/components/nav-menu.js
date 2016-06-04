@@ -5,12 +5,22 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchItems } from '../actions/index';
 import { Link } from 'react-router';
+import { fetchUser } from '../actions/index';
 
 
 class NavMenu extends Component {
 
+    componentWillMount() {
+        this.props.fetchUser();
+    }
+
 
     render() {
+        console.log(this.props.user);
+
+        if(!this.props.user){
+            return <div>Loading...</div>
+        }
         return (
             <div className="navbar navbar-default navbar-fixed-top ">
                 <div className="container">
@@ -27,6 +37,7 @@ class NavMenu extends Component {
 
                     </ul>
                     <ul className="nav navbar-nav navbar-right">
+                        <li className="a-mimic"><i>Welcome {this.props.user.user}</i> </li>
                         <li><Link to="/my-profile" className="">
                             My Profile
                         </Link></li>
@@ -41,5 +52,8 @@ class NavMenu extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return{user: state.currentUser.user}
+}
 
-export default NavMenu;
+export default connect(mapStateToProps, { fetchUser} ) (NavMenu);

@@ -7,15 +7,28 @@ export const FETCH_SEARCH_ITEMS = 'FETCH_SEARCH_ITEMS';
 export const CREATE_ITEM = 'CREATE_ITEM';
 export const FETCH_ITEM = 'FETCH_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
+export const FETCH_CURRENT_USER = 'FETCH_USER';
 
 
+export function fetchUser () {
+
+    const request = $.getJSON('/fetch_current_user').then(function (user) {
+        return {
+            user
+        };
+    });
+
+    return {
+        type: FETCH_CURRENT_USER,
+        payload: request
+    };
+}
 
 export function fetchMyItems() {
 
     const request = $.getJSON('/my_items').then(function (result) {
         return {
             list: result
-
         };
     });
 
