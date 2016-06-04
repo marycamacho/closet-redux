@@ -28,8 +28,8 @@ class NavMenu extends Component {
                         <li><Link to="/" className="">
                             My Closet
                         </Link></li>
-                        <li><Link to="/items/new" className="">
-                            Add Item
+                        <li><Link to="/shared" className="">
+                            Shared Closet
                         </Link></li>
                         <li><Link to="/search" className="">
                             Search Items
