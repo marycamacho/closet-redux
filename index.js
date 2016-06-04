@@ -152,6 +152,27 @@
             items(req, res);
         });
 
+        /*app.get("/fetch_item", function (req, res) {
+            var item = require('./server/api/fetch_item')(dbConnection);
+            item(req, res);
+        });*/
+
+        app.get('/fetch_item/:id', function(req, res){
+            const id = req.params.id;
+            var obj_id = new ObjectID(`${id}`);
+            console.log(id);
+            dbConnection.collection('items').findOne({ '_id': obj_id}, function(err, result) {
+                if (err) {
+                    console.log('error: item not found in db');
+
+                } else {
+                    console.log(`item in indexJS: ${result}`);
+                    res.json(result);
+                    res.end();
+                }
+            });
+        });
+
         app.get("/my_items", function (req, res) {
             var items = require('./server/api/items')(dbConnection);
             items(req, res);
@@ -160,6 +181,20 @@
         app.post("/newItem", function(req, res) {
             var newItem = require('./server/api/new-item')(dbConnection);
             newItem(req, res);
+        });
+        
+        app.post('/delete_item/:id', function(req,res) {
+            const id = req.params.id;
+            const obj_id = new ObjectID(`${id}`);
+            console.log(`${obj_id} will be deleted`);
+            dbConnection.collection('items').deleteOne({ '_id': obj_id}, function(err, result) {
+                if (err) {
+                    console.log('error: item not found in db');
+                } else {
+                    console.log('item successfully deleted');
+                    res.end();
+                }
+            });
         });
 
         /*Always put last because it is sequential*/

@@ -62,7 +62,12 @@ export function createItem (props) {
 }
 
 export function fetchItem (id) {
-    //Todo: const request = ;
+
+    const request = $.getJSON(`/fetch_item/${id}` ).then(function (item) {
+        return {
+            item
+        };
+    });
 
     return {
         type: FETCH_ITEM,
@@ -71,7 +76,9 @@ export function fetchItem (id) {
 }
 
 export function deleteItem (id) {
-    //Todo: const request = ;
+    const request = $.post(`/delete_item/${id}`).then(function (result) {
+        return {}
+    });
 
     return {
         type: DELETE_ITEM,
