@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": "git@github.com:/marycamacho/closet-redux.git",
   "scripts": {
-    "prestart": "rm -rf dev && mkdir dev && cp -R pages/* dev && cp -R theme dev",
+    "prestart": "rm -rf dev && mkdir dev && cp -R pages/* dev && cp -R theme dev && cp -R node_modules/react-widgets/dist/css dev",
     "start": "node index.js",
     "test": "mocha --compilers js:babel-core/register --require ./test/test_helper.js --recursive ./test",
     "test:watch": "npm run test -- --watch"
@@ -52,7 +52,7 @@
     "react-flip-move": "^2.3.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.0.1",
-    "react-tag-input": "^3.0.1",
+    "react-widgets": "^3.3.2",
     "redux": "^3.0.4",
     "redux-form": "^5.2.5",
     "redux-promise": "^0.5.3",
