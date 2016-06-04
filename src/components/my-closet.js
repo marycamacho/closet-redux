@@ -5,6 +5,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
 import { fetchMyItems } from '../actions';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 
@@ -33,6 +34,12 @@ class MyCloset extends Component {
 
 
     render() {
+        const transitionOptions = {
+          transitionName: "fade",
+            transitionEnterTimeout: 500,
+            transitionLeaveTimeout: 2500
+        };
+
         return (
             <div>
                 <div className="text-xs-right">
@@ -42,9 +49,9 @@ class MyCloset extends Component {
                 </div>
                 <h3>Items</h3>
                 <ul className="list-group">
+                    <ReactCSSTransitionGroup {...transitionOptions}>
                     {this.renderItems()}
-
-                        
+                    </ReactCSSTransitionGroup>
                 </ul>
             </div>
         );
