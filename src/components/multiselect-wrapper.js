@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import Multiselect from 'react-widgets/lib/Multiselect';
 
 export default class MultiselectWrapper extends Component {
