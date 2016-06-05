@@ -17,25 +17,77 @@ class MyProfile extends Component {
                 </div>
                 <div className="panel-body required-panel">
                     <form className="form-horizontal">
-                        <div className="col-md-4">
+
                             <div className="well well-white-bg">
+
                                 <h3 className="panel-title">Account Details</h3>
 
                                 <div className="form-group">
+                                    <div className="col-md-12">
                                     <label>First Name</label>
-                                    <input className="readOnly">Mary</input>
+                                    <div className="required-field-block ">
+                                        <input className=" form-control " readOnly placeholder="Mary"></input>
+                                    </div>
+                                    </div>
+                                </div>
+
+                                <div className="form-group">
+                                    <div className="col-md-12">
+                                        <label>Last Name</label>
+                                        <div className="required-field-block ">
+                                            <input className=" form-control " readOnly placeholder="Camacho"></input>
+
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="form-group">
-                                    <label>Last Name</label>
-                                    <input className="readOnly">Camacho</input>
+                                    <div className="col-md-12">
+                                        <label>Email</label>
+                                        <div className="required-field-block ">
+                                            <input className=" form-control readOnly"></input>
+                                            <div className="required-icon">
+                                                <div className="text">*</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="form-group">
-                                    <label>Email</label>
-                                    <input className="readOnly">mary@marycamacho.com</input>
+                                    <div className="col-md-12">
+                                        <label>Address</label>
+                                        <div className="required-field-block ">
+                                            <input className=" form-control readOnly"></input>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div className="form-group">
-                                    <label>City </label>
-                                    <input className="readOnly">Denver</input>
+                                    <div className="col-md-12">
+                                        <label>City</label>
+                                        <div className="required-field-block ">
+                                            <input className=" form-control readOnly"></input>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <div className="col-md-12">
+                                        <label>State</label>
+                                        <div className="required-field-block ">
+                                            <input className=" form-control readOnly"></input>
+                                            <div className="required-icon">
+                                                <div className="text">*</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <div className="col-md-12">
+                                        <label>Zip</label>
+                                        <div className="required-field-block ">
+                                            <input className=" form-control readOnly"></input>
+                                            <div className="required-icon">
+                                                <div className="text">*</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
 
 
@@ -43,26 +95,47 @@ class MyProfile extends Component {
                             <div className="well well-white-bg">
                                 <h3 className="panel-title">Style Profile</h3>
 
-                                <div className="form-group">
-                                    <label>Favorite Style</label>
-                                    <input className="readOnly">Funky Chic</input>
-                                </div>
-                                <div className="form-group">
-                                    <label>Height</label>
-                                    <input className="readOnly">5' 8"</input>
-                                </div>
-                                <div className="form-group">
-                                    <label>Weight</label>
-                                    <input className="readOnly">148</input>
-                                </div>
-                                <div className="form-group">
-                                    <label>Favorite Color</label>
-                                    <input className="readOnly">Purple</input>
-                                </div>
 
+                                <div className="form-group">
+                                    <div className="col-md-12">
+                                        <label>Favorite Style</label>
+                                        <div className="required-field-block ">
+                                            <input className=" form-control readOnly"></input>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <div className="col-md-12">
+                                        <label>Height</label>
+                                        <div className="required-field-block ">
+                                            <input className=" form-control readOnly"></input>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <div className="col-md-12">
+                                        <label>Weight</label>
+                                        <div className="required-field-block ">
+                                            <select className=" form-control readOnly"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <div className="col-md-12">
+                                        <label>Favorite Color</label>
+                                        <div className="required-field-block ">
+                                            <input className=" form-control readOnly"></input>
 
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="form-group">
+                                    <div className="col-md-12">
+                                    <button type="submit" className="pull-right btn btn-primary">Submit</button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
+
                     </form>
                 </div>
             </div>
