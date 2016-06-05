@@ -20,16 +20,15 @@ class MyCloset extends Component {
 
     renderItems() {
         const items = this.props.myItems.list;
-        return items.map((item) => {
-            return (
+        return items.map((item) => (
                 <li className="list-group-item" key={item._id}>
                     <Link to={"items/" + item._id}>
                         <span className="pull-xs-right">{item.category}</span>
                         <strong>{item.name}</strong>
                     </Link>
                 </li>
-            );
-        });
+            )
+        );
     }
 
 

@@ -21,16 +21,15 @@ class SharedCloset extends Component {
     renderItems() {
         const items = this.props.myItems.list;
         console.log(items);
-        return items.map((item) => {
-            return (
+        return items.map((item) => (
                 <li className="list-group-item" key={item.id}>
                     <Link to={"items/" + item._id}>
 
                         <strong>{item.id}</strong>
                     </Link>
                 </li>
-            );
-        });
+            )
+        );
     }
 
 
