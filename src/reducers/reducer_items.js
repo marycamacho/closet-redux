@@ -1,5 +1,6 @@
 import { FETCH_MY_ITEMS } from '../actions';
 import { FETCH_ITEM } from '../actions';
+import { FETCH_SHARED_ITEMS } from '../actions';
 
 const INITIAL_STATE = {list: [], item: null };
 
@@ -18,6 +19,12 @@ export default function(state = INITIAL_STATE, action) {
                 ...state,
                 list: action.payload.list
             };
+       case FETCH_SHARED_ITEMS:
+
+           return {
+               ...state,
+               list: action.payload.list
+           };
     default:
         return state;
     }

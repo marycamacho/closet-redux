@@ -4,28 +4,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { fetchMyItems } from '../actions';
+import { fetchSharedItems } from '../actions';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 
-class MyCloset extends Component {
+class SharedCloset extends Component {
 
     componentWillMount() {
 
-        this.props.fetchMyItems();
+        this.props.fetchSharedItems();
 
        
     }
 
     renderItems() {
         const items = this.props.myItems.list;
+        console.log(items);
         return items.map((item) => {
             return (
-                <li className="list-group-item" key={item._id}>
+                <li className="list-group-item" key={item.id}>
                     <Link to={"items/" + item._id}>
-                        <span className="pull-xs-right">{item.category}</span>
-                        <strong>{item.name}</strong>
+
+                        <strong>{item.id}</strong>
                     </Link>
                 </li>
             );
@@ -63,4 +64,4 @@ function mapStateToProps(state) {
     return {myItems: state.myItems};
 }
 
-export default connect(mapStateToProps, {fetchMyItems})(MyCloset);
+export default connect(mapStateToProps, {fetchSharedItems})(SharedCloset);

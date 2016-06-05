@@ -8,6 +8,7 @@ export const CREATE_ITEM = 'CREATE_ITEM';
 export const FETCH_ITEM = 'FETCH_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const FETCH_CURRENT_USER = 'FETCH_USER';
+export const FETCH_SHARED_ITEMS = 'FETCH_SHARED_ITEMS';
 
 
 export function fetchUser () {
@@ -34,6 +35,20 @@ export function fetchMyItems() {
 
     return {
         type: FETCH_MY_ITEMS,
+        payload: request
+    };
+}
+
+export function fetchSharedItems() {
+
+    const request = $.getJSON('/shared_items').then(function (result) {
+        return {
+            list: result
+        };
+    });
+
+    return {
+        type: FETCH_SHARED_ITEMS,
         payload: request
     };
 }

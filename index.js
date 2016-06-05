@@ -178,6 +178,11 @@
             items(req, res);
         });
 
+        app.get("/shared_items", function (req, res) {
+            var items = require('./server/api/shared_items')(dbConnection);
+            items(req, res);
+        });
+
         app.post("/newItem", function(req, res) {
             var newItem = require('./server/api/new-item')(dbConnection);
             newItem(req, res);

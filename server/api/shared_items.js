@@ -8,20 +8,27 @@ var assert = require('assert');
 
 module.exports = function (dbConnection) {
 
+    var ObjectId = require('mongodb').ObjectID;
+
     return function (req, res) {
-        if (!req.session.firstName) {
+        if (!req.session.userId) {
             res.send("[]");
-            return;
+
         } else {
-            dbConnection.collection('items').find({ user: req.session.userId })
-                .toArray(function (err, itemsArr) {
+
+            console.log(req.session.userId);
+            dbConnection.collection('users').findOne(
+                { _id: ObjectId(`${req.session.userId}`)},
+                { "myItems" : 1, "sharedItems" : 1 },
+                function (err, result) {
                     if (err) {
-                        res.send('["name": "null"]');
-                        return;
+                        res.send('[]');
+
                     }
                     assert.equal(err, null);
-                    res.send(JSON.stringify(itemsArr));
-                })
+                    result = result.myItems.concat(result.sharedItems);
+                    res.json(result);
+                });
         }
     }
 };
