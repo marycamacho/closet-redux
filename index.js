@@ -214,8 +214,9 @@
 
 
         app.use(function (req, res, next) {
-            res.status(404);
-            res.send("File not found");
+            // res.status(404);
+            // res.send("File not found");
+            res.sendFile(__dirname + '/dev/index.html');
         });
 
         app.listen(PORT, function () {

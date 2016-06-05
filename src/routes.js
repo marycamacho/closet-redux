@@ -12,6 +12,7 @@ import SearchItems from './components/search';
 import MyProfile from './components/my-profile';
 import SearchResults from './components/search-results';
 import SharedCloset from './components/shared-closet';
+import NotFound from './components/not-found';
 
 
 
@@ -24,6 +25,6 @@ export default (
         <Route path="search-results" component={SearchResults} />
         <Route path="shared" component={SharedCloset} />
         <Route path="my-profile" component={MyProfile} />
-
+        <Route path="*" component={NotFound} />
     </Route>
 );
