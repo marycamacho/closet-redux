@@ -6,7 +6,7 @@ import { fetchItems } from '../actions/index';
 import {reduxForm} from 'redux-form';
 import { createItem } from '../actions/index';
 import { Link } from 'react-router';
-import Multiselect from 'react-widgets/lib/Multiselect';
+import MultiselectWrapper from './multiselect-wrapper';
 
 
 
@@ -64,9 +64,8 @@ class NewItem extends Component {
             <div className="form-group">
                 <label>Colors</label>
                 <div>
-                    <Multiselect {...colors}
+                    <MultiselectWrapper colors={colors}
                         data={chooseColors}
-                        
                     />
                 </div>
             </div>
