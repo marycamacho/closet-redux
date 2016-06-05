@@ -9,7 +9,7 @@ var paths = {
 
 module.exports = {
   context: paths.src,
-
+    devtool: 'cheap-module-eval-source-map',
   entry: './index.js',
   output: {
     path: paths.dev,
