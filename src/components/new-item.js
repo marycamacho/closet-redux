@@ -64,7 +64,7 @@ class NewItem extends Component {
             <div className="form-group">
                 <label>Colors</label>
                 <div>
-                    <MultiselectWrapper colors={colors}
+                    <MultiselectWrapper {...colors}
                         data={chooseColors}
                     />
                 </div>
