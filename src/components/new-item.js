@@ -39,38 +39,64 @@ class NewItem extends Component {
             fields: {name, categories, description, image, colors}, handleSubmit } = this.props;
 
         return (
-        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+        <form className="panel panel-default well well-white-bg col-md-12" onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+            <div className="panel-heading">
+                <h3 className="panel-title">Add an Item</h3>
+            </div>
+            <div className="panel-body required-panel">
 
-            <h3>Add an Item</h3>
-            <div className={`form-group ${name.touched && name.invalid ? "has-danger" : '' }`}>
-                <label>Item Name</label>
-                <input type="text" className="form-control" {...name} />
-                <div className="text-help">{name.touched ? name.error : ''}</div>
-            </div>
-            <div className={`form-group ${categories.touched && categories.invalid ? "has-danger" : ''}`}>
-                <label>Category</label>
-                <input type="text" className="form-control" {...categories} />
-                <div className="text-help">{categories.touched ? categories.error : ''}</div>
-            </div>
-            <div className="form-group">
-                <label>Description</label>
-                <textarea className="form-control" {...description} />
-            </div>
-            <div className={`form-group ${image.touched && image.invalid ? "has-danger" : ''}`}>
-                <label>Image URL</label>
-                <input type="text" className="form-control" {...image} />
-                <div className="text-help">{image.touched ? image.error : ''}</div>
-            </div>
-            <div className="form-group">
-                <label>Colors</label>
-                <div>
-                    <MultiselectWrapper colors={colors}
-                        data={chooseColors}
-                    />
+                <div className={`form-group ${name.touched && name.invalid ? "has-danger" : '' }`}>
+                    <label>Item Name</label>
+                    <div className="required-field-block">
+                        <input type="text" className="form-control" {...name} />
+                        <div className="required-icon">
+                            <div className="text">*</div>
+                        </div>
+                        <div className="text-help">{name.touched ? name.error : ''}</div>
+                    </div>
                 </div>
+                <div className={`form-group ${categories.touched && categories.invalid ? "has-danger" : ''}`}>
+                    <label>Category</label>
+                    <div className="required-field-block">
+                        <input type="text" className="form-control" {...categories} />
+                        <div className="required-icon">
+                            <div className="text">*</div>
+                        </div>
+                        <div className="text-help">{categories.touched ? categories.error : ''}</div>
+                    </div>
+                </div>
+                <div className="form-group">
+                    <label>Description</label>
+                    <textarea className="form-control" {...description} />
+                </div>
+                <div className={`form-group ${image.touched && image.invalid ? "has-danger" : ''}`}>
+                    <label>Image URL</label>
+                    <div className="required-field-block">
+                        <input type="text" className="form-control" {...image} />
+                        <div className="required-icon">
+                            <div className="text">*</div>
+                        </div>
+                        <div className="text-help">{image.touched ? image.error : ''}</div>
+                    </div>
+                </div>
+                <div className="form-group">
+                    <label>Colors</label>
+                    <div className="required-field-block">
+                        <div>
+                            <MultiselectWrapper colors={colors}
+                                data={chooseColors}
+                            />
+                        </div>
+                        <div className="required-icon">
+                            <div className="text">*</div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" className="btn btn-primary">Submit</button>
+                <Link to="/" className="btn btn-danger">Cancel</Link>
+
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-            <Link to="/" className="btn btn-danger">Cancel</Link>
+
         </form>
         )
     }
