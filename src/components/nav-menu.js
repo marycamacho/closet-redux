@@ -31,7 +31,7 @@ class NavMenu extends Component {
                         <li><Link to="/shared" className="">
                             Shared Closet
                         </Link></li>
-                        <li><Link to="/search" className="">
+                        <li><Link to="/search-results" className="">
                             Search Items
                         </Link></li>
 
