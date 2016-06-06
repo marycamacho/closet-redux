@@ -6,19 +6,6 @@ import { fetchItems } from '../actions/index';
 import {reduxForm} from 'redux-form';
 import { createItem } from '../actions/index';
 import { Link } from 'react-router';
-import MultiselectWrapper from './multiselect-wrapper';
-
-
-
-const chooseColors = [
-    'Red', 'Orange', 'Yellow', 'Black', 'White', 'Green', 'Blue', 'Tan', 'Purple', 'Brown', 'Beige', 'Olive', 'Pink'
-];
-const chooseCategories = [
-    'Tops', 'Pants', 'Jeans', 'Dresses', 'Activewear', 'Accessories', 'Skirt', 'Vest', 'Jacket', 'Swimwear', 'Shoes', 'Boots', 'Sandals', 'Shorts', 'Suits', 'Outerwear', 'Lingerie'
-];
-const chooseStyles = [
-    'Bohemian', 'Arty', 'Chic', 'Classic', 'Exotic', 'Flamboyant', 'Glamorous', 'Romantic', 'Sexy', 'Sophisticated', 'Western', 'Traditional', 'Preppy', 'Punk', 'Tomboy', 'Rocker', 'Goth'
-];
 
 class NewItem extends Component {
 
