@@ -23,7 +23,8 @@ class NewItem extends Component {
 
     render () {
         const {
-            fields: {name, categories, description, image, colors}, handleSubmit } = this.props;
+            fields: {name, category, description, image, color, makePublic, size, style},
+            handleSubmit } = this.props;
 
         return (
         <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
@@ -34,10 +35,10 @@ class NewItem extends Component {
                 <input type="text" className="form-control" {...name} />
                 <div className="text-help">{name.touched ? name.error : ''}</div>
             </div>
-            <div className={`form-group ${categories.touched && categories.invalid ? "has-danger" : ''}`}>
+            <div className={`form-group ${category.touched && category.invalid ? "has-danger" : ''}`}>
                 <label>Category</label>
-                <input type="text" className="form-control" {...categories} />
-                <div className="text-help">{categories.touched ? categories.error : ''}</div>
+                <input type="text" className="form-control" {...category} />
+                <div className="text-help">{category.touched ? category.error : ''}</div>
             </div>
             <div className="form-group">
                 <label>Description</label>
@@ -48,16 +49,81 @@ class NewItem extends Component {
                 <input type="text" className="form-control" {...image} />
                 <div className="text-help">{image.touched ? image.error : ''}</div>
             </div>
+            <div className='form-group'>
+                <label>
+                    <input type="checkbox" {...makePublic}/> Make Item Public
+                </label>
+            </div>
             <div className="form-group">
-                <label>Colors</label>
+                <label>Main Color</label>
                 <div>
-                    <MultiselectWrapper {...colors}
-                        data={chooseColors}
-                    />
+                    <select className="form-control"
+                        {...color}
+                        // required syntax for reset form to work
+                        // undefined will not change value to first empty option
+                        // when resetting
+                        value={color.value || ''}>
+                        <option></option>
+                        <option value="Red">Red</option>
+                        <option value="Green">Green</option>
+                        <option value="Blue">Blue</option>
+                        <option value="Yellow">Yellow</option>
+                        <option value="Orange">Orange</option>
+                        <option value="Pink">Pink</option>
+                        <option value="White">White</option>
+                        <option value="Black">Black</option>
+                        <option value="Brown">Brown</option>
+                        <option value="Tan">Tan</option>
+                        <option value="Purple">Purple</option>
+                        <option value="Beige">Beige</option>
+                    </select>
                 </div>
             </div>
-            <button type="submit" className="btn btn-primary">Submit</button>
-            <Link to="/" className="btn btn-danger">Cancel</Link>
+            <div className="form-group">
+                <label>Size</label>
+                <div>
+                    <select className="form-control"
+                        {...size}
+                        // required syntax for reset form to work
+                        // undefined will not change value to first empty option
+                        // when resetting
+                        value={size.value || ''}>
+                        <option></option>
+                        <option value="X Small">X Small</option>
+                        <option value="Small">Small</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Large">Large</option>
+                        <option value="X Large">X Large</option>
+                        <option value="XX Large">XX Large</option>
+                    </select>
+                </div>
+            </div>
+            <div className="form-group">
+                <label>Style</label>
+                <div>
+                    <select className="form-control"
+                        {...style}
+                        // required syntax for reset form to work
+                        // undefined will not change value to first empty option
+                        // when resetting
+                        value={style.value || ''}>
+                        <option></option>
+                        <option value="Bohemian">Bohemian</option>
+                        <option value="Arty">Arty</option>
+                        <option value="Chic">Chic</option>
+                        <option value="Romantic">Romantic</option>
+                        <option value="Sexy">Sexy</option>
+                        <option value="Classic">Classic</option>
+                        <option value="Glamorous">Glamorous</option>
+                        <option value="Preppy">Preppy</option>
+                        <option value="Punk">Punk</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" className="pull-right btn btn-primary">Submit</button>
+            <Link to="/" className="btn btn-default pull-right">Cancel</Link>
+
+
         </form>
         )
     }
@@ -87,9 +153,7 @@ function validate (values) {
 
 export default reduxForm({
     form: 'NewItemForm',
-    fields: ['name', 'categories', 'description', 'image', 'colors'],
-    initialValues: {
-        colors: [ 'Red' ]
-    },
+    fields: ['name', 'category', 'description', 'image', 'color', 'makePublic', 'size', 'style' ],
+
     validate
 }, null, {createItem})(NewItem);
