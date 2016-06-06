@@ -265,7 +265,7 @@ input:-webkit-input-placeholder{color:#a5a5a5}
         overflow: hidden;
     }
     .img-fluid {
-
+        max-width: 350px;
     }
     .row.my-row > [class*="col-"] {
         position: relative

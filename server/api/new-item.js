@@ -10,6 +10,7 @@ module.exports = function (dbConnection) {
     return function (req, res) {
 
         var newItem = req.body;
+        var ObjectId = require('mongodb').ObjectID;
         
         newItem.createDate = new Date;
        
@@ -19,9 +20,18 @@ module.exports = function (dbConnection) {
             if (err) {
                 res.send("error: something bad happened and your item was not saved")
             }
+            dbConnection.collection('users').update(
+                { _id: ObjectId(`${req.session.userId}`)},
+                { $push: { myItems : { id: `${newItem.image}`}}}, function(err, result) {
+                if (err) {
+                    res.send("id as image url not added to user collection")
+                }
+            });
             res.send("success-item-posted");
             res.end();
 
         })
+
+
     }
 };

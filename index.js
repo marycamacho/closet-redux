@@ -196,15 +196,24 @@
         
         app.post('/delete_item/:id', function(req,res) {
             const id = req.params.id;
+            const image = req.params.image;
             const obj_id = new ObjectID(`${id}`);
             console.log(`${obj_id} will be deleted`);
-            dbConnection.collection('items').deleteOne({ '_id': obj_id}, function(err, result) {
-                if (err) {
-                    console.log('error: item not found in db');
-                } else {
-                    console.log('item successfully deleted');
-                    res.end();
-                }
+
+
+            dbConnection.collection('users').update(
+                { _id: ObjectId(`${req.session.userId}`)},
+                { $pull: { myItems : { id: `${image}`}}}, function(err, result) {
+                    if (err) {
+                        res.send("id as image url not removed to user collection")
+                    }
+                    dbConnection.collection('items').deleteOne({ '_id': obj_id}, function(err, result) {
+                        if (err) {
+                            console.log('error: item not found in items collection');
+                        }
+                        console.log('item successfully deleted');
+                        res.end();
+                    });
             });
         });
 
