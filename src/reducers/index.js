@@ -8,7 +8,7 @@ const rootReducer = combineReducers({
   myItems: ItemsReducers,
   form: formReducer,
   currentUser: CurrentUserReducer,
-  myProfile: MyProfileReducer
+  myProfile: MyProfileReducer,
 });
 
 export default rootReducer;

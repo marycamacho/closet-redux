@@ -3,6 +3,7 @@
  */
 
 export const FETCH_MY_ITEMS = 'FETCH_MY_ITEMS';
+export const FETCH_ALL_ITEMS = 'FETCH_ALL_ITEMS';
 export const FETCH_SEARCH_ITEMS = 'FETCH_SEARCH_ITEMS';
 export const CREATE_ITEM = 'CREATE_ITEM';
 export const FETCH_ITEM = 'FETCH_ITEM';
@@ -50,6 +51,20 @@ export function fetchMyItems() {
 
     return {
         type: FETCH_MY_ITEMS,
+        payload: request
+    };
+}
+
+export function fetchAllItems() {
+
+    const request = $.getJSON('/all_items').then(function (result) {
+        return {
+            list: result
+        };
+    });
+
+    return {
+        type: FETCH_ALL_ITEMS,
         payload: request
     };
 }
