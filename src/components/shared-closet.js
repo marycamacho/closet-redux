@@ -34,8 +34,8 @@ class SharedCloset extends Component {
 
     render() {
         const transitionOptions = {
-          transitionName: "fade",
-            transitionEnterTimeout: 500,
+          transitionName: "slide",
+            transitionEnterTimeout: 1000,
             transitionLeaveTimeout: 2500
         };
 

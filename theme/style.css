@@ -159,9 +159,9 @@ form a {
 
 /* animation */
 .fade-enter {
-    right: 100px;
-    transform: rotateX(90deg) rotateZ(90deg);
-}
+     right: 100px;
+     transform: rotateX(90deg) rotateZ(90deg);
+ }
 .fade-enter-active {
     right: 0px;
     transform: rotateX(0deg) rotateZ(0deg);
@@ -172,6 +172,24 @@ form a {
     opacity: 1;
 }
 .fade-leave-active {
+    opacity: 0;
+    transition: .5s ease-out all;
+}
+
+.slide-enter {
+    bottom: 300px;
+    transform: rotateX(20deg) rotateZ(20deg);
+}
+.slide-enter-active {
+    bottom: 0px;
+    transform: rotateX(0deg) rotateZ(0deg);
+    transition: .5s ease-in all;
+}
+
+.slide-leave {
+    opacity: 1;
+}
+.slide-leave-active {
     opacity: 0;
     transition: .5s ease-out all;
 }
