@@ -9,6 +9,7 @@ export const FETCH_ITEM = 'FETCH_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const FETCH_CURRENT_USER = 'FETCH_USER';
 export const FETCH_SHARED_ITEMS = 'FETCH_SHARED_ITEMS';
+export const FETCH_PROFILE = 'FETCH_PROFILE';
 
 
 export function fetchUser () {
@@ -21,6 +22,20 @@ export function fetchUser () {
 
     return {
         type: FETCH_CURRENT_USER,
+        payload: request
+    };
+}
+
+export function fetchProfile () {
+
+    const request = $.getJSON('/fetch-profile').then(function (result) {
+        return {
+            result
+        };
+    });
+
+    return {
+        type: FETCH_PROFILE,
         payload: request
     };
 }

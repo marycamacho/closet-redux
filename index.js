@@ -76,6 +76,12 @@
 
         });
 
+        app.get('/fetch-profile', function (req, res) {
+            var myProfile = require('./server/api/fetch-profile')(dbConnection);
+            myProfile(req, res);
+        });
+        
+
         //logout
 
         app.get('/logout', function (req, res) {

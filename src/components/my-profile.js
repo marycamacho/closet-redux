@@ -3,17 +3,33 @@
  */
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { fetchItem, deleteItem } from '../actions/index';
+import { reduxForm } from 'redux-form';
+import { fetchProfile, } from '../actions/index';
 import { Link } from 'react-router';
 
 class MyProfile extends Component {
+
+
+    componentWillMount() {
+        this.props.fetchProfile();
+    }
+
+    //const myProfile = this.props.profile.data;
+
 
 
     render() {
         return (
             <div className="panel panel-default well well-white-bg col-md-12">
                 <div className="panel-heading">
-                    <h3 class-name="panel-title"><strong>My Profile</strong></h3>
+                    <div className="col-sm-6">
+                         <h3 class-name="panel-title "><strong>My Profile</strong></h3>
+                    </div>
+                    <div className=" col-sm-6">
+                        <Link to={"edit-profile"} className="top20 pull-right">
+                             <span className="btn btn-default ">Edit Profile</span>
+                        </Link>
+                    </div>
                 </div>
                 <div className="panel-body required-panel">
                     <form className="form-horizontal">
@@ -129,11 +145,7 @@ class MyProfile extends Component {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="form-group">
-                                    <div className="col-md-12">
-                                    <button type="submit" className="pull-right btn btn-primary">Submit</button>
-                                    </div>
-                                </div>
+
                             </div>
 
                     </form>
@@ -143,5 +155,9 @@ class MyProfile extends Component {
     }
 }
 
+function mapStateToProps(state) {
+    return {myProfile: state.myProfile};
+}
 
-export default MyProfile;
+
+export default connect(mapStateToProps, {fetchProfile}) (MyProfile) ;

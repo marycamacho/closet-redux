@@ -3,7 +3,7 @@ body { padding-top: 70px; }
 body {
     background-color: #fdefec;
 
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Raleway', sans-serif !important;
 }
 
 .closet-links {
@@ -30,9 +30,7 @@ body {
 }
 
 .selected-item {
-    min-height: 400px;
-    background: #b45858;
-    color: white;
+
 }
 
 .closet-itemsList {
@@ -152,7 +150,7 @@ h3 {
 }
 
 form a {
-    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .a-mimic {
@@ -223,11 +221,67 @@ form a {
 }
 
 
-
+.colorbg {
+    background: url('/theme/assets/colorbg.jpg');
+}
 .well-white-bg, .panel-heading{background-color:#fff!important}
 
 input:-moz-placeholder{color:#a5a5a5}
 
 input:-webkit-input-placeholder{color:#a5a5a5}
 
-.signup-panel .required-field-block,.required-panel .required-field-block{position:relative}.signup-panel .required-field-block .required-icon,.required-panel .required-field-block .required-icon{display:inline-block;vertical-align:middle;margin:-.25em .25em 0;background-color:#e8e8e8;border-color:#e8e8e8;padding:.5em .8em;color:rgba(0,0,0,.65);text-transform:uppercase;font-weight:normal;border-radius:.325em;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;-webkit-transition:background .1s linear;-moz-transition:background .1s linear;transition:background .1s linear;font-size:75%}.signup-panel .required-field-block .required-icon,.required-panel .required-field-block .required-icon{background-color:transparent;position:absolute;top:1px;right:1px;z-index:10;margin:0;width:30px;height:30px;padding:0;text-align:center;-webkit-transition:color .2s ease;-moz-transition:color .2s ease;transition:color .2s ease}.signup-panel .required-field-block .required-icon:after,.required-panel .required-field-block .required-icon:after{position:absolute;content:"";right:1px;top:1px;z-index:-1;width:0;height:0;border-top:0 solid transparent;border-right:30px solid transparent;border-bottom:30px solid transparent;border-left:0 solid transparent;border-right-color:inherit;-webkit-transition:border-color .2s ease;-moz-transition:border-color .2s ease;transition:border-color .2s ease}.signup-panel .required-field-block .required-icon .text,.required-panel .required-field-block .required-icon .text{color:#b80000;font-size:26px;margin:-3px 0 0 12px}.signup-panel .required-select-input,.required-panel .required-select-input{width:10px!important}.signup-panel .required-select-input:after,.required-panel .required-select-input:after{border-right:none!important;border-bottom:none!important}
+.signup-panel .required-field-block,.required-panel .required-field-block{position:relative}
+
+.signup-panel .required-field-block .required-icon,.required-panel .required-field-block .required-icon{display:inline-block;vertical-align:middle;margin:-.25em .25em 0;background-color:#e8e8e8;border-color:#e8e8e8;padding:.5em .8em;color:rgba(0,0,0,.65);text-transform:uppercase;font-weight:normal;border-radius:.325em;-webkit-box-sizing:border-box;-moz-box-sizing:border-box;-ms-box-sizing:border-box;box-sizing:border-box;-webkit-transition:background .1s linear;-moz-transition:background .1s linear;transition:background .1s linear;font-size:75%}
+
+.signup-panel .required-field-block .required-icon,.required-panel .required-field-block .required-icon{background-color:transparent;position:absolute;top:1px;right:1px;z-index:10;margin:0;width:30px;height:30px;padding:0;text-align:center;-webkit-transition:color .2s ease;-moz-transition:color .2s ease;transition:color .2s ease}
+
+.signup-panel .required-field-block .required-icon:after,.required-panel .required-field-block .required-icon:after{position:absolute;content:"";right:1px;top:1px;z-index:-1;width:0;height:0;border-top:0 solid transparent;border-right:30px solid transparent;border-bottom:30px solid transparent;border-left:0 solid transparent;border-right-color:inherit;-webkit-transition:border-color .2s ease;-moz-transition:border-color .2s ease;transition:border-color .2s ease}
+
+.signup-panel .required-field-block .required-icon .text,.required-panel .required-field-block .required-icon .text{color:#b80000;font-size:26px;margin:-3px 0 0 12px}
+
+.signup-panel .required-select-input,.required-panel .required-select-input{width:10px!important}
+
+.signup-panel .required-select-input:after,.required-panel .required-select-input:after{border-right:none!important;border-bottom:none!important}
+
+.panel-heading {
+    overflow: auto;
+}
+
+.top20 {
+    margin-top: 20px;
+}
+
+
+.content {
+    padding: 10px;
+}
+
+
+@media (min-width:768px) {
+    .my-row {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+    }
+    .img-fluid {
+
+    }
+    .row.my-row > [class*="col-"] {
+        position: relative
+    }
+    .background {
+        position: absolute;
+        padding-top: 200%;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+    .content {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        padding: 10px;
+    }
+
+}
