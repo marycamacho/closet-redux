@@ -16,7 +16,7 @@ module.exports = function (dbConnection) {
 
         } else {
 
-            console.log(req.session.userId);
+           
             dbConnection.collection('users').findOne(
                 { _id: ObjectId(`${req.session.userId}`)},
                 function (err, result) {

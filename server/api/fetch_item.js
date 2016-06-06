@@ -8,7 +8,7 @@ var assert = require('assert');
 module.exports = function (dbConnection) {
 
     return function (req, res) {
-        console.log(req.params);
+        
 
         //const itemId = `{'_id': '${id}'}`;
         //console.log(itemId);

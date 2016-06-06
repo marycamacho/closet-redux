@@ -71,7 +71,7 @@
                 return;
             }
 
-            console.log(`user from /${req.session.firstName}`);
+
             res.json({user: req.session.firstName});
 
         });
@@ -166,7 +166,7 @@
         app.get('/fetch_item/:id', function(req, res){
             const id = req.params.id;
             var obj_id = new ObjectID(`${id}`);
-            console.log(id);
+            
             dbConnection.collection('items').findOne({ '_id': obj_id}, function(err, result) {
                 if (err) {
                     console.log('error: item not found in db');
