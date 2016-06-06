@@ -22,7 +22,7 @@ class SharedCloset extends Component {
         const items = this.props.myItems.list;
         console.log(items);
         return items.map((item) => (
-                <div className="item-container" key={item.id}>
+                <div className="item-container" key={item._id}>
                     <Link to={"items/" + item._id}>
                         <img className="closetItem" src={item.id}/>
                     </Link>
@@ -45,11 +45,7 @@ class SharedCloset extends Component {
                 <div className="col-sm-6">
                     <h3 class-name="panel-title "><strong>Shared Closet</strong></h3>
                 </div>
-                <div className=" col-sm-6">
-                    <Link to="items/new" className="top20 pull-right">
-                        <span className="btn btn-default ">Add Item</span>
-                    </Link>
-                </div>
+                
             </div>
             <div className="panel-body required-panel">
                 <div className="">
