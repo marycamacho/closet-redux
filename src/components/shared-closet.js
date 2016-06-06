@@ -22,12 +22,11 @@ class SharedCloset extends Component {
         const items = this.props.myItems.list;
         console.log(items);
         return items.map((item) => (
-                <li className="list-group-item" key={item.id}>
+                <div className="item-container" key={item.id}>
                     <Link to={"items/" + item._id}>
-
-                        <strong>{item.id}</strong>
+                        <img className="closetItem" src={item.id}/>
                     </Link>
-                </li>
+                </div>
             )
         );
     }
@@ -41,19 +40,27 @@ class SharedCloset extends Component {
         };
 
         return (
-            <div>
-                <div className="text-xs-right">
-                    <Link to="items/new"  className="btn btn-default pull-right">
-                        Add Item
+        <div className="panel panel-default well well-white-bg col-md-12">
+            <div className="panel-heading">
+                <div className="col-sm-6">
+                    <h3 class-name="panel-title "><strong>Shared Closet</strong></h3>
+                </div>
+                <div className=" col-sm-6">
+                    <Link to="items/new" className="top20 pull-right">
+                        <span className="btn btn-default ">Add Item</span>
                     </Link>
                 </div>
-                <h3>Items</h3>
-                <ul className="list-group">
-                    <ReactCSSTransitionGroup {...transitionOptions}>
-                    {this.renderItems()}
-                    </ReactCSSTransitionGroup>
-                </ul>
             </div>
+            <div className="panel-body required-panel">
+                <div className="">
+                    <div className="image-container">
+                        <ReactCSSTransitionGroup {...transitionOptions}>
+                        {this.renderItems()}
+                        </ReactCSSTransitionGroup>
+                    </div>
+                </div>
+            </div>
+        </div>
         );
     }
 }
