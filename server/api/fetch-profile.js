@@ -8,7 +8,7 @@ var assert = require('assert');
 
 module.exports = function (dbConnection) {
 
-    var ObjectId = require('mongodb').ObjectID;
+    var ObjectID = require('mongodb').ObjectID;
 
     return function (req, res) {
         if (!req.session.userId) {
@@ -18,7 +18,7 @@ module.exports = function (dbConnection) {
 
            
             dbConnection.collection('users').findOne(
-                { _id: ObjectId(`${req.session.userId}`)},
+                { _id: ObjectID(`${req.session.userId}`)},
                 function (err, result) {
                     if (err) {
                         res.send('[]');
