@@ -13,7 +13,7 @@ import MyProfile from './components/my-profile';
 import SearchResults from './components/search-results';
 import SharedCloset from './components/shared-closet';
 import NotFound from './components/not-found';
-import ItemDetails from './components/item-details';
+
 
 
 
@@ -22,7 +22,6 @@ export default (
         <IndexRoute component={ MyCloset } />
         <Route path="items/new" component={NewItem} />
         <Route path="items/:id" component={ItemDetail} />
-        <Route path="item/:id" component={ItemDetails}/>
         <Route path="search" component={SearchItems} />
         <Route path="search-results" component={SearchResults} />
         <Route path="shared" component={SharedCloset} />

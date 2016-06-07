@@ -21,7 +21,7 @@ module.exports = function (dbConnection) {
                         
                     }
                     assert.equal(err, null);
-                    console.log(itemsArr);
+                    
                     res.send(JSON.stringify(itemsArr));
                 })
         }
