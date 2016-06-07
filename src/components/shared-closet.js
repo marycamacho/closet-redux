@@ -23,8 +23,8 @@ class SharedCloset extends Component {
         console.log(items);
         return items.map((item) => (
                 <div className="item-container" key={item._id}>
-                    <Link to={"items/" + item._id}>
-                        <img className="closetItem" src={item.id}/>
+                    <Link to={"items/" + item.id}>
+                        <img className="closetItem" src={item.image}/>
                     </Link>
                 </div>
             )
