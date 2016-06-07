@@ -158,10 +158,15 @@
             items(req, res);
         });
 
-        /*app.get("/fetch_item", function (req, res) {
-            var item = require('./server/api/fetch_item')(dbConnection);
+        app.get("/all_items", function (req, res) {
+            var item = require('./server/api/all_items')(dbConnection);
             item(req, res);
-        });*/
+        });
+
+        app.get("/fetch_item_detail/:id", function (req, res) {
+            var item = require('./server/api/fetch_item_detail')(dbConnection);
+            item(req, res);
+        });
 
         app.get('/fetch_item/:id', function(req, res){
             const id = req.params.id;
@@ -173,10 +178,27 @@
 
                 } else {
                     console.log(`item in indexJS: ${result}`);
-                    res.json(result);
-                    res.end();
+                    //add function to determine 'isItemInMyItems' or isItemInSharedItems32
+                    if (req.session.userId == result.user) {
+                        result.isMyItem = true;
+                        res.json(result);
+                        res.end();
+                    } else {
+                        dbConnection.collection('users').findOne({
+                            _id: ObjectId(`${req.session.userId}`, function (err, match) {
+                                if (err) {
+                                    res.json(result);
+                                    res.end();
+                                } else {
+                                    result.isSharedItem = true;
+                                    res.json(result);
+                                    res.end();
+                                }
+                            })
+                        })
+                    }
                 }
-            });
+            })
         });
 
         app.get("/my_items", function (req, res) {

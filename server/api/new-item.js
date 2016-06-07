@@ -20,9 +20,11 @@ module.exports = function (dbConnection) {
             if (err) {
                 res.send("error: something bad happened and your item was not saved")
             }
+            
+            const itemObj = ObjectId(result._id);
             dbConnection.collection('users').update(
                 { _id: ObjectId(`${req.session.userId}`)},
-                { $push: { myItems : { id: `${newItem.image}`}}}, function(err, result) {
+                { $push: { myItems : { id: itemObj, "image" : `${newItem.image}`}}}, function(err, result) {
                 if (err) {
                     res.send("id as image url not added to user collection")
                 }

@@ -9,14 +9,16 @@ var assert = require('assert');
 module.exports = function (dbConnection) {
 
     return function (req, res) {
-        if (!req.session.firstName) {
+        if (!req.session.firstName) {;
             res.send("[]");
             return;
         } else {
             dbConnection.collection('items').find()
                 .toArray(function (err, itemsArr) {
                     if (err) {
+                        console.log('error creating items array');
                         res.send('[]');
+                        
                     }
                     assert.equal(err, null);
                     console.log(itemsArr);

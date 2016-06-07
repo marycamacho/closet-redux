@@ -7,6 +7,7 @@ export const FETCH_ALL_ITEMS = 'FETCH_ALL_ITEMS';
 export const FETCH_SEARCH_ITEMS = 'FETCH_SEARCH_ITEMS';
 export const CREATE_ITEM = 'CREATE_ITEM';
 export const FETCH_ITEM = 'FETCH_ITEM';
+export const FETCH_ITEM_DETAIL = 'FETCH_ITEM_DETAIL';
 export const DELETE_ITEM = 'DELETE_ITEM';
 export const FETCH_CURRENT_USER = 'FETCH_USER';
 export const FETCH_SHARED_ITEMS = 'FETCH_SHARED_ITEMS';
@@ -109,6 +110,20 @@ export function createItem (props) {
 export function fetchItem (id) {
 
     const request = $.getJSON(`/fetch_item/${id}` ).then(function (item) {
+        return {
+            item
+        };
+    });
+
+    return {
+        type: FETCH_ITEM,
+        payload: request
+    };
+}
+
+export function fetchItemDetail (id) {
+
+    const request = $.getJSON(`/fetch_item_detail/${id}` ).then(function (item) {
         return {
             item
         };

@@ -3,13 +3,13 @@
  */
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { fetchItemDetail, deleteItem } from '../actions/index';
+import { fetchItem, deleteItem } from '../actions/index';
 import { Link } from 'react-router';
 
 
 
 
-class ItemDetails extends Component {
+class ItemDetail extends Component {
 
     static contextTypes = {
         router:PropTypes.object
@@ -17,7 +17,7 @@ class ItemDetails extends Component {
 
     componentWillMount() {
 
-        this.props.fetchItemDetail(this.props.params.id);
+        this.props.fetchItem(this.props.params.id);
     }
     
     onDeleteClick() {
@@ -83,4 +83,4 @@ function mapStateToProps(state) {
     return {item: state.myItems.item}
 }
 
-export default connect(mapStateToProps, { fetchItemDetail, deleteItem }) (ItemDetails);
+export default connect(mapStateToProps, { fetchItem, deleteItem }) (ItemDetail);

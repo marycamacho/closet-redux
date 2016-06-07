@@ -21,7 +21,7 @@ class SearchResults extends Component {
 
     renderItems() {
         const items = this.props.myItems.list;
-        console.log(items.list);
+        console.log(items);
 
         if (!items) {
             return(
