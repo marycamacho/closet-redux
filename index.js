@@ -18,6 +18,7 @@
     var webpackConfig = require('./webpack.config.js');
     var compiler = webpack(webpackConfig);
     var ObjectID = require('mongodb').ObjectID;
+    var _ = require ('lodash');
 
 
     /*MiddleWare*/
@@ -163,41 +164,56 @@
             item(req, res);
         });
 
-        app.get("/fetch_item_detail/:id", function (req, res) {
-            var item = require('./server/api/fetch_item_detail')(dbConnection);
-            item(req, res);
-        });
-
         app.get('/fetch_item/:id', function(req, res){
             const id = req.params.id;
-            var obj_id = new ObjectID(`${id}`);
+            const obj_item = new ObjectID(`${id}`);
             
-            dbConnection.collection('items').findOne({ '_id': obj_id}, function(err, result) {
+            
+            dbConnection.collection('items').findOne({ '_id': obj_item}, function(err, result) {
                 if (err) {
                     console.log('error: item not found in db');
 
                 } else {
-                    console.log(`item in indexJS: ${result}`);
+                    console.log(result);
+                    console.log('item found in items collection');
                     //add function to determine 'isItemInMyItems' or isItemInSharedItems32
                     if (req.session.userId == result.user) {
                         result.isMyItem = true;
+                        console.log('item found in user-myItems');
                         res.json(result);
                         res.end();
                     } else {
-                        dbConnection.collection('users').findOne({
-                            _id: ObjectId(`${req.session.userId}`, function (err, match) {
+                        console.log(req.session.userId);
+                        dbConnection.collection('users').findOne(
+                            {_id: ObjectID(req.session.userId)},{ _id:0, sharedItems: 1 }, function (err, matchedUser) {
                                 if (err) {
+                                    console.log('user cannot be found');
                                     res.json(result);
                                     res.end();
                                 } else {
-                                    result.isSharedItem = true;
-                                    res.json(result);
-                                    res.end();
+
+                                    // todo: the item.id matches but the result is still false...
+
+                                    var isFound = _.some(matchedUser.sharedItems, function(item)
+                                    {
+                                        console.log(`item.id: ${item.id}`);
+                                        console.log(`obj_item: ${obj_item}`);
+                                        return item.id == obj_item;
+                                    });
+                                    console.log(isFound);
+                                    if (isFound == true){
+                                        result.isSharedItem = true;
+                                        res.json(result);
+                                        res.end();
+                                    } else {
+                                        res.json(result);
+                                        res.end();
+                                    }
                                 }
                             })
-                        })
-                    }
+                        }
                 }
+
             })
         });
 
