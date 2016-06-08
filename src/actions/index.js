@@ -8,6 +8,8 @@ export const FETCH_SEARCH_ITEMS = 'FETCH_SEARCH_ITEMS';
 export const CREATE_ITEM = 'CREATE_ITEM';
 export const FETCH_ITEM = 'FETCH_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
+export const ADD_SHARED_ITEM = 'ADD_SHARED_ITEM';
+export const REMOVE_SHARED_ITEM = 'REMOVE_SHARED_ITEM';
 export const FETCH_CURRENT_USER = 'FETCH_USER';
 export const FETCH_SHARED_ITEMS = 'FETCH_SHARED_ITEMS';
 export const FETCH_PROFILE = 'FETCH_PROFILE';
@@ -127,6 +129,28 @@ export function deleteItem (id) {
 
     return {
         type: DELETE_ITEM,
+        payload: request
+    };
+}
+
+export function addSharedItem (id) {
+    const request = $.post(`/add_shared/${id}`).then(function (result) {
+        return {}
+    });
+
+    return {
+        type: ADD_SHARED_ITEM,
+        payload: request
+    };
+}
+
+export function removeSharedItem (id) {
+    const request = $.post(`/remove_shared/${id}`).then(function (result) {
+        return {}
+    });
+
+    return {
+        type: REMOVE_SHARED_ITEM,
         payload: request
     };
 }

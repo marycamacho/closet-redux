@@ -183,7 +183,7 @@
                         res.json(result);
                         res.end();
                     } else {
-                        console.log(req.session.userId);
+                        console.log(`userID of logged in user: ${req.session.userId}`);
                         dbConnection.collection('users').findOne(
                             {_id: ObjectID(req.session.userId)},{ _id:0, sharedItems: 1 }, function (err, matchedUser) {
                                 if (err) {
@@ -191,17 +191,12 @@
                                     res.json(result);
                                     res.end();
                                 } else {
-
-                                    // todo: the item.id matches but the result is still false...
-
-                                    var isFound = _.some(matchedUser.sharedItems, function(item)
+                                    var isShared = _.some(matchedUser.sharedItems, function(item)
                                     {
-                                        console.log(`item.id: ${item.id}`);
-                                        console.log(`obj_item: ${obj_item}`);
-                                        return item.id == obj_item;
+                                        return item.id.equals(obj_item);
                                     });
-                                    console.log(isFound);
-                                    if (isFound == true){
+                                    console.log(isShared);
+                                    if (isShared == true){
                                         result.isSharedItem = true;
                                         res.json(result);
                                         res.end();
@@ -234,16 +229,15 @@
         
         app.post('/delete_item/:id', function(req,res) {
             const id = req.params.id;
-            const image = req.params.image;
             const obj_id = new ObjectID(`${id}`);
             console.log(`${obj_id} will be deleted`);
 
 
             dbConnection.collection('users').update(
-                { _id: ObjectId(`${req.session.userId}`)},
-                { $pull: { myItems : { id: `${image}`}}}, function(err, result) {
+                { _id: ObjectID(`${req.session.userId}`)},
+                { $pull: { myItems : { id: obj_id}}}, function(err, result) {
                     if (err) {
-                        res.send("id as image url not removed to user collection")
+                        res.send("nested element removed from user collection myItems")
                     }
                     dbConnection.collection('items').deleteOne({ '_id': obj_id}, function(err, result) {
                         if (err) {
@@ -253,6 +247,51 @@
                         res.end();
                     });
             });
+        });
+
+        app.post('/add_shared/:id', function(req,res) {
+            const id = req.params.id;
+            const obj_id = new ObjectID(`${id}`);
+            console.log(`${obj_id} will be added to sharedItems`);
+
+            // find imageURL from items collection
+            dbConnection.collection('items').findOne({ '_id': obj_id}, function(err, result) {
+                if (err) {
+                    console.log('error: item not found in db');
+
+                } else {
+                    console.log(`item found in items collection: ${result}`);
+                    const image = result.image;
+
+                    //add id and image to myShared array in user collection
+                    dbConnection.collection('users').update(
+                        { _id: ObjectID(`${req.session.userId}`)},
+                        { $push: { sharedItems : { "id": obj_id, "image" : image}}}, function(err, result) {
+                            if (err) {
+                                res.send("item not added to myShared in user collection")
+                            }
+                            console.log('item successfully added to myShared');
+                            res.end();
+                        });
+                    }
+            });
+        });
+
+        app.post('/remove_shared/:id', function(req,res) {
+            const id = req.params.id;
+            const obj_id = new ObjectID(`${id}`);
+            console.log(`${obj_id} will be removed from sharedItems`);
+
+
+            dbConnection.collection('users').update(
+                { _id: ObjectID(`${req.session.userId}`)},
+                { $pull: { sharedItems : { id: obj_id}}}, function(err, result) {
+                    if (err) {
+                        res.send("item not removed from myShared in user collection")
+                    }
+                    res.send('item successfully removed from myShared');
+                    res.end();
+                });
         });
 
         /*Always put last because it is sequential*/

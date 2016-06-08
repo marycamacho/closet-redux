@@ -3,7 +3,7 @@
  */
 import React, { Component, PropTypes } from 'react';
 import { connect } from 'react-redux';
-import { fetchItem, deleteItem } from '../actions/index';
+import { fetchItem, deleteItem, addSharedItem, removeSharedItem } from '../actions/index';
 import { Link } from 'react-router';
 
 
@@ -28,6 +28,22 @@ class ItemDetail extends Component {
         });
     }
 
+    onAddClick() {
+        this.props.addSharedItem(this.props.params.id).then(() => {
+            // item added to user collection as element of sharedItems
+            //should navigate user back to previous view (before details)
+            this.context.router.push('/shared');
+        });
+    }
+
+    onRemoveClick(){
+        this.props.removeSharedItem(this.props.params.id).then(() => {
+            // item removed from user collection as element of sharedItems
+            // should navigate back to previous view (before details)
+            this.context.router.push('/shared');
+        });
+    }
+
     // this function should return differing buttons based on the data in the item
 
     renderButtons() {
@@ -42,14 +58,14 @@ class ItemDetail extends Component {
         } else if (item.isSharedItem == true) {
             return (
                 <div className="btn btn-default"
-                     onClick={this.onDeleteClick.bind(this)}>
+                     onClick={this.onRemoveClick.bind(this)}>
                     Remove from Shared Closet
                 </div>
             )
         } else {
             return (
                 <div className="btn btn-default"
-                     onClick={this.onDeleteClick.bind(this)}>
+                     onClick={this.onAddClick.bind(this)}>
                     Add to Shared Closet
                 </div>
             )
@@ -114,4 +130,4 @@ function mapStateToProps(state) {
     return {item: state.myItems.item}
 }
 
-export default connect(mapStateToProps, { fetchItem, deleteItem }) (ItemDetail);
+export default connect(mapStateToProps, { fetchItem, deleteItem, addSharedItem, removeSharedItem }) (ItemDetail);
