@@ -76,11 +76,12 @@ class ItemDetail extends Component {
     render () {
         const {item} = this.props;
 
-
         if(!this.props.item) {
             return <div>Loading...</div>
         } else {
             console.log(item.isMyItem);
+            const description = `${item.name} & ' ' & ${item.description}`;
+            const pinUrl = `https://www.pinterest.com/pin/create/button/?url=http://www.mysharedcloset.com/&media=${item.image}&description=${description}`;
             return (
                 <div className="panel panel-default well well-white-bg col-md-12 ">
                     <div className="panel-heading">
@@ -97,11 +98,18 @@ class ItemDetail extends Component {
 
                         <div className="well well-white-bg">
 
-                            <h3 className="panel-title">{item.name}</h3>
+                            <h2 className="panel-title itemName">{item.name}</h2>
 
                             <div className=" row my-row selected-item">
                                 <div className="col-sm-5 image-col">
+
                                     <img className="img-fluid detail-image" src={item.image}/>
+                                    <a target="_blank" className="pinButton" data-pin-do="buttonPin" href={pinUrl}>
+                                        <img src="//assets.pinterest.com/images/pidgets/pinit_fg_en_rect_gray_20.png" />
+                                    </a>
+
+
+
                                     <p> </p>
                                 </div>
                                 <div className="col-sm-7 ">

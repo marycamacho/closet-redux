@@ -307,3 +307,11 @@ input:-webkit-input-placeholder{color:#a5a5a5}
 .item-container {
     float: left;
 }
+
+.itemName {
+    margin-bottom: 10px !important;
+}
+
+.pinButton {
+    display: block !important;
+}
