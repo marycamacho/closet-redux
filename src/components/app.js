@@ -6,6 +6,7 @@ export default class App extends Component {
     return (
       <div className="" >
         <NavMenu />
+          <div className="bgOffset"></div>
         <div className=" container">{this.props.children}</div>
       </div>
     );

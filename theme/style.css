@@ -315,3 +315,11 @@ input:-webkit-input-placeholder{color:#a5a5a5}
 .pinButton {
     display: block !important;
 }
+
+.cover {
+    background: url("/theme/assets/texture.png") no-repeat top center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
