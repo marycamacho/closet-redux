@@ -43,7 +43,7 @@ class SharedCloset extends Component {
         <div className="panel panel-default well well-white-bg col-md-12">
             <div className="panel-heading">
                 <div className="col-sm-6">
-                    <h3 class-name="panel-title "><strong>Shared Closet</strong></h3>
+                    <h3 className="panel-title "><strong>Shared Closet</strong></h3>
                 </div>
                 
             </div>

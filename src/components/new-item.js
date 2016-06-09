@@ -27,9 +27,12 @@ class NewItem extends Component {
             handleSubmit } = this.props;
 
         return (
-        <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-
-            <h3>Add an Item</h3>
+            <div className="panel panel-default well well-white-bg col-md-12">
+            <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
+                <div className="panel-heading">
+            <h3 className="panel-title"><strong>Add an Item</strong></h3>
+                    </div>
+                <div className="panel-body required-panel">
             <div className={`form-group ${name.touched && name.invalid ? "has-danger" : '' }`}>
                 <label>Item Name</label>
                 <input type="text" className="form-control" {...name} />
@@ -123,8 +126,10 @@ class NewItem extends Component {
             <button type="submit" className="pull-right btn btn-primary">Submit</button>
             <Link to="/" className="btn btn-default pull-right">Cancel</Link>
 
+        </div>
 
         </form>
+        </div>
         )
     }
     

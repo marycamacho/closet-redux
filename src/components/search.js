@@ -26,10 +26,12 @@ class SearchItems extends Component {
             handleSubmit } = this.props;
 
         return (
+            <div className="panel panel-default well well-white-bg col-md-12">
             <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
-
+                <div className="panel-heading">
                 <h3>Search for Items that Match the following Criteria</h3>
-
+                    </div>
+                <div className="panel-body required-panel">
                 <div className={`form-group`}>
                     <label>Category</label>
                     <select className="form-control"
@@ -41,7 +43,7 @@ class SearchItems extends Component {
                         <option></option>
                         <option value="Tops">Tops</option>
                         <option value="Dresses">Dresses</option>
-                        <option value="Jackets">Jackets</option>
+                        <option value="Jacket">Jackets</option>
                         <option value="Pants">Pants</option>
                         <option value="Jeans">Jeans</option>
                         <option value="Activewear">Activewear</option>
@@ -124,8 +126,9 @@ class SearchItems extends Component {
                 <button type="submit" className="pull-right btn btn-primary">Search</button>
                 <Link to="/" className="btn btn-default pull-right">Cancel</Link>
 
-
+</div>
             </form>
+            </div>
         )
     }
 }
