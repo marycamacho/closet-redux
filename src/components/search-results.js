@@ -5,17 +5,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router';
-import { fetchAllItems } from '../actions';
+import { searchItems } from '../actions';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 
 
 class SearchResults extends Component {
 
-    componentWillMount() {
+    componentDidMount() {
 
-        this.props.fetchAllItems();
-
+        if (!this.props) {
+            this.props.searchItems();
+        }
 
     }
 
@@ -52,6 +53,11 @@ class SearchResults extends Component {
                     <div className="col-sm-6">
                         <h3 class-name="panel-title "><strong>Search Results</strong></h3>
                     </div>
+                    <div className=" col-sm-6">
+                        <Link to="search" className="top20 pull-right">
+                            <span className="btn btn-default ">Back to Search</span>
+                        </Link>
+                    </div>
 
                 </div>
                 <div className="panel-body required-panel">
@@ -73,4 +79,4 @@ function mapStateToProps(state) {
     return {myItems: state.myItems};
 }
 
-export default connect(mapStateToProps, {fetchAllItems})(SearchResults);
+export default connect(mapStateToProps, {searchItems})(SearchResults);

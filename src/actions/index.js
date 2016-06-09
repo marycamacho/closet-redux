@@ -4,7 +4,7 @@
 
 export const FETCH_MY_ITEMS = 'FETCH_MY_ITEMS';
 export const FETCH_ALL_ITEMS = 'FETCH_ALL_ITEMS';
-export const FETCH_SEARCH_ITEMS = 'FETCH_SEARCH_ITEMS';
+export const SEARCH_ITEMS = 'SEARCH_ITEMS';
 export const CREATE_ITEM = 'CREATE_ITEM';
 export const FETCH_ITEM = 'FETCH_ITEM';
 export const DELETE_ITEM = 'DELETE_ITEM';
@@ -85,11 +85,15 @@ export function fetchSharedItems() {
     };
 }
 
-export function fetchSearchItems() {
-    //Todo: const request = ;
+export function searchItems(props) {
+    const request = $.getJSON('/search_items', props).then(function (result) {
+        return {
+            list: result
+        };
+    });
 
     return {
-        type: FETCH_SEARCH_ITEMS,
+        type: SEARCH_ITEMS,
         payload: request
     };
 }

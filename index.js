@@ -46,10 +46,10 @@
 
         app.get("/", function (req, res) {
 
-            /*if (!req.session.firstName)  {
-                res.redirect("index.html");
+            if (!req.session.firstName)  {
+                res.redirect("/logout");
                 return;
-            }*/
+            }
             res.sendFile(__dirname + '/dev/index.html');
 
         });
@@ -219,6 +219,11 @@
 
         app.get("/shared_items", function (req, res) {
             var items = require('./server/api/shared_items')(dbConnection);
+            items(req, res);
+        });
+
+        app.get("/search_items", function (req, res) {
+            var items = require('./server/api/search_items')(dbConnection);
             items(req, res);
         });
 
