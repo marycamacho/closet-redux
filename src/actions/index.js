@@ -13,6 +13,7 @@ export const REMOVE_SHARED_ITEM = 'REMOVE_SHARED_ITEM';
 export const FETCH_CURRENT_USER = 'FETCH_USER';
 export const FETCH_SHARED_ITEMS = 'FETCH_SHARED_ITEMS';
 export const FETCH_PROFILE = 'FETCH_PROFILE';
+export const UPDATE_PROFILE = 'UPDATE_PROFILE';
 
 
 export function fetchUser () {
@@ -39,6 +40,20 @@ export function fetchProfile () {
 
     return {
         type: FETCH_PROFILE,
+        payload: request
+    };
+}
+
+export function updateProfile () {
+
+    const request = $.post('/update-profile').then(function (result) {
+        return {
+            result
+        };
+    });
+
+    return {
+        type: UPDATE_PROFILE,
         payload: request
     };
 }

@@ -151,6 +151,11 @@
             })
 
         }));
+
+        app.post("/update-profile", function(req, res) {
+            var myProfile = require('./server/api/update-profile')(dbConnection);
+            myProfile(req, res);
+        });
         
         //Closet
 

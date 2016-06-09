@@ -25,6 +25,7 @@ module.exports = function (dbConnection) {
 
                     }
                     assert.equal(err, null);
+                    console.log(result);
                     res.json(result);
                 });
         }
