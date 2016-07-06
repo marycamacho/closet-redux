@@ -105,6 +105,7 @@
         app.get('/logingoogle', OAuth.auth('google', 'http://localhost:3700/oauth/redirect'));
 
         app.get('/oauth/redirect', OAuth.redirect(function(result, req, res) {
+            
             if (result instanceof Error) {
                 res.status(500).res.send("error: " + result.message);
             }

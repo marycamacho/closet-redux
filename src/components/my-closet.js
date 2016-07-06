@@ -37,7 +37,7 @@ class MyCloset extends Component {
         const transitionOptions = {
           transitionName: "fade",
             transitionEnterTimeout: 500,
-            transitionLeaveTimeout: 2500
+            transitionLeaveTimeout: 0
         };
 
         return (

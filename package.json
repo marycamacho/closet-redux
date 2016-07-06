@@ -11,7 +11,7 @@
     "test:watch": "npm run test -- --watch"
   },
   "author": "Mary Camacho",
-  "license": "",
+  "license": "Copyright 2016, Mary Camacho",
   "bugs": {
     "url": "https://github.com/marycamacho/my_shared_closet/issues"
   },
@@ -54,6 +54,7 @@
     "react-flip-move": "^2.3.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.0.1",
+    "react-router-transition": "0.0.5",
     "react-widgets": "^3.3.2",
     "redux": "^3.0.4",
     "redux-form": "^5.2.5",

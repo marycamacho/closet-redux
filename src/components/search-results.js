@@ -44,7 +44,7 @@ class SearchResults extends Component {
         const transitionOptions = {
             transitionName: "slide",
             transitionEnterTimeout: 1000,
-            transitionLeaveTimeout: 2500
+            transitionLeaveTimeout: 0
         };
 
         return (
